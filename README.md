@@ -11,7 +11,7 @@ Este repositorio muestra los recursos editables que el grupo ya produjo y la doc
 - Personajes editables en `assets/personajes/editables/`.
 - Escenario editable en `assets/escenarios/editables/`.
 - Documento de preproduccion y registro de evidencias en `docs/`.
-- Wireframe editable de una pantalla de decision en `docs/evidencias/`.
+- Propuesta editable de inicio, escena, decision, resultado, final y HUD en `docs/evidencias/`.
 
 ## Equipo
 

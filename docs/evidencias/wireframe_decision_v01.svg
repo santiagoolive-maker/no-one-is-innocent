@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Wireframe de decision de No One Is Innocent</title>
+  <desc id="desc">Pantalla editable con estado, escena, texto y tres decisiones.</desc>
+  <rect width="1280" height="720" fill="#16202A"/>
+  <rect x="56" y="48" width="1168" height="54" rx="6" fill="#324A5F"/>
+  <text x="82" y="82" fill="#F6F8FA" font-family="Arial, sans-serif" font-size="25" font-weight="700">NO ONE IS INNOCENT</text>
+  <text x="1090" y="82" fill="#B8C4CE" font-family="Arial, sans-serif" font-size="18">ESTADO</text>
+  <rect x="56" y="128" width="1168" height="300" rx="8" fill="#263847" stroke="#324A5F" stroke-width="3"/>
+  <text x="88" y="176" fill="#C99B3B" font-family="Arial, sans-serif" font-size="18">DECISION 03 / RELACION CON ZENITH</text>
+  <text x="88" y="225" fill="#F6F8FA" font-family="Arial, sans-serif" font-size="31" font-weight="700">¿Que hace Klark con la informacion?</text>
+  <text x="88" y="270" fill="#B8C4CE" font-family="Arial, sans-serif" font-size="21">Lugar reservado para fondo propio y retrato del personaje.</text>
+  <rect x="88" y="305" width="540" height="78" rx="6" fill="#324A5F"/>
+  <text x="114" y="353" fill="#F6F8FA" font-family="Arial, sans-serif" font-size="22">A  Confrontar a Veyra</text>
+  <rect x="652" y="305" width="540" height="78" rx="6" fill="#324A5F"/>
+  <text x="678" y="353" fill="#F6F8FA" font-family="Arial, sans-serif" font-size="22">B  Investigar en secreto</text>
+  <rect x="370" y="458" width="540" height="78" rx="6" fill="#324A5F"/>
+  <text x="396" y="506" fill="#F6F8FA" font-family="Arial, sans-serif" font-size="22">C  Ignorar y protegerlo</text>
+  <text x="56" y="632" fill="#B8C4CE" font-family="Arial, sans-serif" font-size="19">Confianza 5/10   Moralidad 5/10   Investigacion 5/10   Lealtad 5/10   Corrupcion 0/10</text>
+  <text x="56" y="676" fill="#C99B3B" font-family="Arial, sans-serif" font-size="16">v01 - editable. Reemplazar el espacio de fondo con un recurso propio antes de entregar.</text>
+</svg>

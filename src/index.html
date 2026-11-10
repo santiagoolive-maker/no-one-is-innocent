@@ -5,15 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>No One Is Innocent</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="historia.js"></script>
+    <script defer src="main.js"></script>
   </head>
   <body>
-    <main class="inicio">
-      <p class="etiqueta">ZENITH CLASSIFIED</p>
-      <h1>NO ONE IS INNOCENT</h1>
-      <p class="bajada">Aventura grafica de decisiones</p>
-      <button id="iniciar" type="button">Nueva partida</button>
-      <p id="mensaje" aria-live="polite"></p>
+    <main class="juego">
+      <section id="inicio" class="inicio" aria-labelledby="titulo-inicio">
+        <div class="portada">
+          <p class="etiqueta">Archivo clasificado · Proyecto Integrador 2026</p>
+          <h1 id="titulo-inicio" tabindex="-1">No One Is <span>Innocent</span></h1>
+          <p class="bajada">Klark vuelve a enfrentarse a la operación que marcó su pasado.</p>
+          <div class="opciones">
+            <button id="iniciar" class="principal" type="button">Nueva partida</button>
+            <button id="continuar" type="button" disabled>Continuar partida</button>
+            <button id="creditos" type="button" aria-expanded="false" aria-controls="equipo">Créditos</button>
+          </div>
+          <p id="equipo" hidden>Proyecto Integrador 2026 · Thiago Maya, Santiago Olive y Facundo Felipe.</p>
+        </div>
+      </section>
+
+      <section id="historia" class="historia" aria-labelledby="titulo-escena" hidden>
+        <header class="encabezado">
+          <p class="etiqueta">No One Is Innocent</p>
+          <button id="menu" type="button">Menú principal</button>
+        </header>
+        <div class="recorrido">
+          <article id="escena" class="escena">
+            <p id="numero-escena" class="etiqueta"></p>
+            <h2 id="titulo-escena" tabindex="-1"></h2>
+            <img id="retrato" src="../public/img/adrian-veyra.webp" alt="Retrato ilustrado de Adrián Veyra" width="180" hidden>
+            <p id="texto-escena" class="bajada"></p>
+            <div id="opciones" class="opciones"></div>
+          </article>
+          <aside class="panel" aria-label="Estado de la partida">
+            <h2>Variables</h2>
+            <dl id="variables"></dl>
+            <h2>Pistas y pruebas</h2>
+            <p id="sin-pruebas">Todavía no hay pistas ni pruebas.</p>
+            <ul id="pruebas"></ul>
+          </aside>
+        </div>
+      </section>
+      <p id="mensaje" role="status" hidden></p>
     </main>
-    <script src="main.js"></script>
   </body>
 </html>

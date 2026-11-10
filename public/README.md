@@ -1,3 +1,3 @@
-# Recursos publicos
+# Recursos de la WebApp
 
-Aqui se agregaran las exportaciones PNG, audio y fondos que use la WebApp. Los archivos editables originales se conservan en `assets/`.
+[Portada y retrato](img/) en WebP para la interfaz del Sprint 3. Los [archivos editables](../assets/) se guardan por separado.

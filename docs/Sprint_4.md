@@ -1,9 +1,24 @@
 # Sprint 4
 
-La partida empieza con el pasado de Klark, una nueva misión, la reunión con Veyra, su encargo y la amenaza. Elegir cómo investigar el informe y cómo responder al mensaje cambia las variables y el texto de la escena siguiente. El recorrido continúa con las seis decisiones y los tres finales del Sprint 3.
+La entrega usa la versión de **NO ONE IS INNOCENT3.zip**. Para jugar, descargá el repositorio y abrí [src/index.html](../src/index.html) en Chrome.
 
-La **Ficha de Klark** registra las decisiones tomadas. Se abre desde el panel lateral o con la tecla V y se cierra con Escape. **Continuar partida** recupera el avance guardado en el navegador, incluso en mitad del encargo. Las partidas de Sprint 3 retoman el punto en el que estaban.
+## Avances
 
-Los cuatro [escenarios editables de Illustrator](../assets/escenarios/editables/) tienen [versiones WebP en el juego](../public/img/escenarios/). La azotea nocturna abre el prólogo, el borde de la azotea acompaña la misión y la amenaza, y la oficina pasa de noche a amanecer al llegar al final.
+- Las [láminas del ZIP](../public/img/laminas/) se muestran en el recorrido junto a diálogos y opciones en HTML. La interfaz acomoda la ilustración y el texto en una columna en celular. [Captura del encargo](evidencias/sprint-4/encargo.png)
+- Las seis decisiones afectan los diálogos, el acceso al archivo de BLACK VEIL, las pruebas y la situación del testigo. El desenlace depende tanto de la última elección como de lo que Klark consiguió antes. [Motor narrativo](../src/historia.js)
+- La ficha muestra variables, pistas y consecuencias. Se abre con **V** o con el botón **Variables**. **Escape** vuelve a la escena o al menú. El botón **Animación** permite apagar las transiciones. [Captura de la ficha](evidencias/sprint-4/ficha.png)
+- **Continuar partida** vuelve al último punto mientras la pestaña siga abierta. La versión de este ZIP empieza de nuevo al recargar.
 
-El ZIP de referencia aporta las láminas del [pasado](mockups/sprint-4-pasado.webp), la [reunión](mockups/sprint-4-reunion.webp), el [encargo](mockups/sprint-4-encargo.webp) y la [ficha](mockups/sprint-4-ficha.webp). Los textos, las opciones y el registro se muestran con controles HTML.
+Los cuatro [escenarios editables de Illustrator](../assets/escenarios/editables/) y sus [exportaciones WebP](../public/img/escenarios/) están guardados en GitHub. La versión jugable de esta entrega usa las ilustraciones del ZIP.
+
+## Evidencias de los recorridos
+
+Las opciones de la tabla se cuentan de arriba hacia abajo, después de las tres pantallas de introducción.
+
+| Opciones | Final observado en Chrome | Captura |
+| --- | --- | --- |
+| 1, 2, 1, 1, 1, 1 | La verdad sale a la luz | [Escritorio](evidencias/sprint-4/final-verdad.png) |
+| 2, 1, 2, 2, 2, 2 | El nuevo cómplice | [Escritorio](evidencias/sprint-4/final-complice.png) |
+| 3, 3, 3, 3, 3, 1 | El peso del silencio | [Celular](evidencias/sprint-4/final-silencio-movil.png) |
+
+Pasaron **735 pruebas automáticas**. La batería cubre las 729 combinaciones de decisiones y seis comprobaciones adicionales. Para reproducirla, ejecutá `node --test tests/historia.test.cjs` desde la raíz del repositorio.

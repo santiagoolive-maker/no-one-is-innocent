@@ -1,58 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080e16">
     <title>No One Is Innocent</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="historia.js"></script>
-    <script defer src="main.js"></script>
-  </head>
-  <body>
-    <main class="juego">
-      <section id="inicio" class="inicio" aria-labelledby="titulo-inicio">
-        <div class="portada">
-          <p class="etiqueta">Archivo clasificado · Proyecto Integrador 2026</p>
-          <h1 id="titulo-inicio" tabindex="-1">No One Is <span>Innocent</span></h1>
-          <p class="bajada">Klark vuelve a enfrentarse a la operación que marcó su pasado.</p>
-          <div class="opciones">
-            <button id="iniciar" class="principal" type="button">Nueva partida</button>
-            <button id="continuar" type="button" disabled>Continuar partida</button>
-            <button id="creditos" type="button" aria-expanded="false" aria-controls="equipo">Créditos</button>
-          </div>
-          <p id="equipo" hidden>Proyecto Integrador 2026 · Thiago Maya, Santiago Olive y Facundo Felipe.</p>
-        </div>
-      </section>
-
-      <section id="historia" class="historia" aria-labelledby="titulo-escena" hidden>
-        <header class="encabezado">
-          <p class="etiqueta">No One Is Innocent</p>
-          <button id="menu" type="button">Menú principal</button>
+    <script src="historia.js" defer></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <main id="juego" aria-label="No One Is Innocent">
+        <header id="cabecera" hidden>
+            <a class="marca" href="#" id="marca" aria-label="Volver al menú">NO ONE <span>IS INNOCENT</span></a>
+            <nav aria-label="Controles de partida">
+                <button id="menu" type="button">Menú <kbd>Esc</kbd></button>
+                <button id="variables" type="button">Variables <kbd>V</kbd></button>
+                <button id="movimiento" type="button" aria-pressed="true">Animación: sí</button>
+            </nav>
         </header>
-        <div class="panorama" aria-hidden="true"></div>
-        <div class="recorrido">
-          <article id="escena" class="escena">
-            <p id="numero-escena" class="etiqueta"></p>
-            <h2 id="titulo-escena" tabindex="-1"></h2>
-            <img id="retrato" src="../public/img/adrian-veyra.webp" alt="Retrato ilustrado de Adrián Veyra" width="180" hidden>
-            <p id="texto-escena" class="bajada"></p>
-            <div id="opciones" class="opciones"></div>
-          </article>
-          <aside class="panel" aria-label="Estado de la partida">
-            <h2>Variables</h2>
-            <dl id="variables"></dl>
-            <h2>Pistas y pruebas</h2>
-            <p id="sin-pruebas">Todavía no hay pistas ni pruebas.</p>
-            <ul id="pruebas"></ul>
-            <details id="ficha">
-              <summary id="abrir-ficha">Ficha de Klark</summary>
-              <p id="sin-decisiones">Todavía no tomaste decisiones.</p>
-              <ol id="registro" aria-label="Registro de decisiones"></ol>
-            </details>
-          </aside>
-        </div>
-      </section>
-      <p id="mensaje" role="status" hidden></p>
+        <section id="pantalla" aria-label="Escena del juego" class="portada">
+            <div id="ilustracion">
+                <canvas id="imagen-escena" width="1536" height="1024" role="img" aria-label="Ilustración del juego">
+                    Tu navegador necesita admitir canvas para mostrar las escenas.
+                </canvas>
+                <p id="pie-ilustracion" hidden></p>
+            </div>
+            <div id="zonas"></div>
+            <article id="narrativa" hidden tabindex="-1" aria-labelledby="titulo-escena"></article>
+        </section>
+        <footer id="ayuda" hidden>Seis decisiones. Tres finales. Cada elección deja una huella.</footer>
+        <p id="descripcion-escena" class="solo-lectores" aria-live="polite"></p>
+        <div id="carga" role="status"><p>Cargando escenas…</p></div>
+        <noscript>Activá JavaScript para jugar.</noscript>
     </main>
-  </body>
+</body>
 </html>

@@ -1,3 +1,3 @@
 # Recursos de la WebApp
 
-[Portada y retrato](img/) en WebP para la interfaz del Sprint 3. Los [archivos editables](../assets/) se guardan por separado.
+Las [láminas originales del ZIP](img/laminas/) se usan en la versión jugable del Sprint 4. Los [fondos WebP](img/escenarios/) y sus [editables de Illustrator](../assets/escenarios/editables/) están disponibles como recursos del proyecto.

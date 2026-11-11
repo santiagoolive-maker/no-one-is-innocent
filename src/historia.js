@@ -7,6 +7,47 @@ const etiquetas = {
   lealtad: "Lealtad", dinero: "Dinero", corrupcion: "Corrupción"
 };
 
+const apertura = [
+  {
+    titulo: "El pasado de Klark",
+    fondo: "azotea-noche",
+    texto: "Klark dejó el ejército tras perder a sus compañeros en BLACK VEIL. Desde entonces trabaja como guardaespaldas privado.",
+    opciones: [{ texto: "Continuar", cambios: {} }]
+  },
+  {
+    titulo: "Una nueva misión",
+    fondo: "azotea-borde",
+    texto: "Adrián Veyra contrata a Klark para protegerlo. Una amenaza contra el empresario despierta recuerdos de la operación que marcó su pasado.",
+    opciones: [{ texto: "Comenzar la investigación", cambios: { investigacion: 1 } }]
+  },
+  {
+    titulo: "La reunión con Veyra",
+    fondo: "oficina-noche",
+    mostrarVeyra: true,
+    texto: "Veyra recibe a Klark en su oficina y le pide que averigüe qué ocurrió durante el incidente de la mañana, quién estuvo involucrado y qué riesgos quedan.",
+    opciones: [{ texto: "Escuchar el encargo", cambios: {} }]
+  },
+  {
+    titulo: "Un pedido del CEO",
+    fondo: "oficina-noche",
+    texto: "Un informe interno apunta a que un empleado está filtrando información. Veyra necesita resultados discretos. ¿Cómo va a proceder Klark?",
+    opciones: [
+      { texto: "Revisar el informe personalmente", cambios: { investigacion: 2, moralidad: 1 }, consecuencia: "Klark detecta una hora que no coincide con el registro de seguridad." },
+      { texto: "Delegar la investigación al equipo", cambios: { lealtad: 1 }, consecuencia: "El equipo confirma que faltan registros y sigue buscando al responsable." },
+      { texto: "Confrontar directamente al empleado", cambios: { corrupcion: 1, investigacion: 1 }, consecuencia: "El empleado se pone a la defensiva y le advierte a Klark que no confíe en nadie." }
+    ]
+  },
+  {
+    titulo: "La amenaza",
+    fondo: "azotea-borde",
+    texto: "Esa noche, Klark encuentra un mensaje que advierte sobre un posible atentado. Veyra le ordena que se concentre en protegerlo.",
+    opciones: [
+      { texto: "Obedecer a Veyra y protegerlo", cambios: { lealtad: 1 }, consecuencia: "El equipo de seguridad acompaña a Klark mientras vigila el edificio." },
+      { texto: "Investigar el origen del mensaje", cambios: { investigacion: 2, moralidad: 1 }, consecuencia: "Klark comprueba que el mensaje salió de la red interna y decide buscar al responsable." }
+    ]
+  }
+];
+
 const escenas = [
   {
     titulo: "El empleado roba información",
@@ -80,15 +121,22 @@ const escenas = [
   }
 ];
 
-function resultado(decisiones) {
+function resultado(decisiones, eleccionesApertura = []) {
   const variables = { ...variablesIniciales };
   const pruebas = [];
 
-  decisiones.forEach((eleccion, indice) => {
-    const opcion = escenas[indice].opciones[eleccion];
-    for (const [variable, cambio] of Object.entries(opcion.cambios)) {
+  function aplicarCambios(cambios) {
+    for (const [variable, cambio] of Object.entries(cambios)) {
       variables[variable] = Math.max(0, Math.min(10, variables[variable] + cambio));
     }
+  }
+
+  eleccionesApertura.forEach((eleccion, indice) => {
+    aplicarCambios(apertura[indice].opciones[eleccion].cambios);
+  });
+  decisiones.forEach((eleccion, indice) => {
+    const opcion = escenas[indice].opciones[eleccion];
+    aplicarCambios(opcion.cambios);
     if (indice === 4 && eleccion === 1 && decisiones[3] === 2) {
       pruebas.push("Registros completos de ZENITH");
     } else if (opcion.prueba) {

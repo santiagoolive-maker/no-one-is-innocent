@@ -86,6 +86,19 @@ button:disabled { opacity: .65; cursor: default; }
   border-bottom: 1px solid var(--borde);
 }
 
+.panorama {
+  min-height: clamp(10rem, 28vw, 20rem);
+  margin-top: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: .45rem;
+  background: var(--panel) var(--escenario) center 54% / cover no-repeat;
+}
+
+[data-fondo="azotea-noche"] { --escenario: url("../public/img/escenarios/fondo1_azotea_noche.webp"); }
+[data-fondo="azotea-borde"] { --escenario: url("../public/img/escenarios/fondo2_azotea_borde.webp"); }
+[data-fondo="oficina-noche"] { --escenario: url("../public/img/escenarios/fondo3_oficina_noche.webp"); }
+[data-fondo="oficina-amanecer"] { --escenario: url("../public/img/escenarios/fondo4_oficina_amanecer.webp"); }
+
 .recorrido {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(15rem, .44fr);
@@ -110,6 +123,9 @@ button:disabled { opacity: .65; cursor: default; }
 .panel dd { margin: 0; font-variant-numeric: tabular-nums; }
 .panel ul { padding-left: 1.15rem; margin-block: 0; }
 .panel li + li { margin-top: .35rem; }
+.panel details { margin-top: 1rem; padding-top: .75rem; border-top: 1px solid var(--borde); }
+.panel summary { cursor: pointer; font-weight: 650; }
+.panel ol { padding-left: 1.25rem; margin-bottom: 0; }
 #mensaje { margin: 0; padding: 1rem; color: var(--texto); text-align: center; }
 
 .aparecer { animation: aparecer .3s ease-out; }

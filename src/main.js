@@ -2,7 +2,23 @@
 
 // La pantalla usa las imágenes originales; texto y botones HTML se adaptan al tamaño.
 // Las reglas de partida están en historia.js y se prueban sin depender del navegador.
+const CLAVE_PARTIDA = "no-one-is-innocent-partida-v1";
 let estado = null;
+let avisoGuardado = "";
+try {
+    const guardado = localStorage.getItem(CLAVE_PARTIDA);
+    if (guardado) {
+        estado = Guardado.restaurar(guardado);
+        if (!estado) avisoGuardado = "La partida guardada no es compatible. Podés empezar una nueva.";
+    }
+} catch { avisoGuardado = "El progreso se conserva mientras esta pestaña siga abierta."; }
+function guardarPartida() {
+    try {
+        localStorage.setItem(CLAVE_PARTIDA, Guardado.serializar(estado));
+        avisoGuardado = "Progreso guardado en este navegador.";
+    } catch { avisoGuardado = "El progreso se conserva mientras esta pestaña siga abierta."; }
+    document.getElementById("estado-guardado").textContent = avisoGuardado;
+}
 let vistaActual = "inicio";
 let animaciones = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let imagenActual = "inicio";
@@ -46,7 +62,7 @@ function accion(etiqueta, callback, clase = "accion") {
 function dibujarImagen(clave) {
     imagenActual = clave;
     const imagen = imagenes[clave];
-    let recorte = vistaActual === "inicio" ? [0, 0, imagen.naturalWidth, imagen.naturalHeight] : recortes[clave];
+    let recorte = vistaActual === "inicio" ? [0, 0, imagen.naturalWidth, imagen.naturalHeight] : (recortes[clave] || [0, 0, imagen.naturalWidth, imagen.naturalHeight]);
     if (vistaActual === "inicio" && window.matchMedia("(max-width: 760px)").matches) recorte = [750, 0, 786, 1024];
     canvas.width = recorte[2];
     canvas.height = recorte[3];
@@ -58,7 +74,7 @@ function dibujarImagen(clave) {
         const inicioPanel = 296 - recorte[1];
         ctx.fillRect(1090, inicioPanel, canvas.width - 1090, canvas.height - inicioPanel);
     }
-    canvas.setAttribute("aria-label", { inicio: "Klark frente a la ciudad nocturna", pasado: "Klark recuerda su pasado frente a la ciudad", reunion: "Reunión en la oficina de Torre Veyra", encargo: "Klark recibe el encargo en la oficina", ficha: "Klark en el archivo de la empresa" }[clave]);
+    canvas.setAttribute("aria-label", { inicio: "Klark frente a la ciudad nocturna", pasado: "Klark recuerda su pasado frente a la ciudad", reunion: "Reunión en la oficina de Torre Veyra", encargo: "Klark recibe el encargo en la oficina", ficha: "Klark en el archivo de la empresa", azotea: "Azotea frente a la ciudad nocturna", borde: "Borde de la azotea de Torre Veyra", oficina: "Oficina de Veyra de noche", amanecer: "Oficina de Veyra al amanecer" }[clave]);
     if (vistaActual === "inicio" && estado && !window.matchMedia("(max-width: 760px)").matches) {
         ctx.fillStyle = "#101c26";
         ctx.fillRect(117, 458, 452, 83);
@@ -73,6 +89,7 @@ function dibujarImagen(clave) {
 function prepararVista(clave, titulo, portada = false) {
     pantalla.className = portada ? "portada" : "historia";
     document.body.classList.toggle("sin-animacion", !animaciones);
+    narrativa.querySelectorAll("video").forEach(video => video.pause());
     zonas.replaceChildren();
     narrativa.replaceChildren();
     narrativa.hidden = portada;
@@ -83,6 +100,7 @@ function prepararVista(clave, titulo, portada = false) {
     document.getElementById("movimiento").textContent = `Animación: ${animaciones ? "sí" : "no"}`;
     document.getElementById("movimiento").setAttribute("aria-pressed", String(animaciones));
     dibujarImagen(clave);
+    document.getElementById("estado-guardado").textContent = avisoGuardado;
     descripcion.textContent = titulo;
     pantalla.setAttribute("aria-label", titulo);
     // Un único ciclo CSS, sin temporizadores ni bucles de canvas acumulados.
@@ -115,6 +133,7 @@ function mostrarResumen() {
 
 function nuevaPartida() {
     estado = Historia.nuevaPartida();
+    guardarPartida();
     mostrarEscena();
 }
 
@@ -122,7 +141,8 @@ function mostrarEscena() {
     if (!estado) return;
     vistaActual = "historia";
     const escena = Historia.obtenerEscena(estado);
-    prepararVista(escena.imagen, `${escena.titulo}. ${escena.texto}`);
+    const ambiente = estado.final ? { verdad: "amanecer", complice: "oficina", silencio: "borde" }[estado.final] : { prologo: "azotea", amenaza: "borde" }[estado.escena];
+    prepararVista(ambiente || escena.imagen, `${escena.titulo}. ${escena.texto}`);
     pie.textContent = escena.personaje + " / " + (estado.final ? "DESPUÉS DE BLACK VEIL" : "NO ONE IS INNOCENT");
     const indiceDecision = Historia.ordenDecisiones.indexOf(estado.escena);
     tituloEscena(escena.titulo, escena.lugar, estado.final ? "EXPEDIENTE CERRADO · 6 / 6 DECISIONES" : indiceDecision >= 0 ? `DECISIÓN ${indiceDecision + 1} / 6` : "ANTES DE LA INVESTIGACIÓN");
@@ -163,6 +183,7 @@ function elegirOpcion(indice, escenaEsperada) {
     const nuevoEstado = Historia.elegirOpcion(estado, indice, escenaEsperada);
     if (nuevoEstado === estado) return;
     estado = nuevoEstado;
+    guardarPartida();
     mostrarEscena();
 }
 
@@ -221,11 +242,16 @@ function zona(etiqueta, rect, callback, deshabilitada = false) {
 }
 
 function volverAlInicio() {
+    pantalla.querySelector(".aviso-guardado")?.remove();
     vistaActual = "inicio";
     prepararVista("inicio", "No One Is Innocent. Menú principal.", true);
     zona("Nueva partida", [117, 358, 452, 84], nuevaPartida);
     zona("Continuar partida", [117, 458, 452, 83], mostrarEscena, !estado);
     zona("Créditos", [117, 558, 452, 83], mostrarCreditos);
+    if (avisoGuardado && !estado) {
+        const aviso = elemento("p", "aviso-guardado", avisoGuardado);
+        pantalla.append(aviso);
+    } else pantalla.querySelector(".aviso-guardado")?.remove();
     zonas.querySelector("button").focus({ preventScroll: true });
     window.scrollTo(0, 0);
 }
@@ -235,9 +261,22 @@ function mostrarCreditos() {
     prepararVista("pasado", "Créditos. No One Is Innocent.");
     pie.textContent = "NO ONE IS INNOCENT";
     tituloEscena("Créditos", "PROYECTO DE PRODUCCIÓN MULTIMEDIA");
-    narrativa.append(elemento("p", "relato", "No One Is Innocent. Desarrollado por nuestro equipo."));
-    narrativa.append(elemento("p", "contexto", "Ilustraciones y personajes del proyecto original. Historia de Klark, Adrián Veyra, BLACK VEIL y ZENITH."));
-    narrativa.append(elemento("p", "contexto", "Elegí con el mouse, el tacto o Tab y Enter. V abre la ficha; Escape vuelve a la escena desde la ficha o al menú. La partida se conserva mientras esta página siga abierta. Nueva partida borra el recorrido anterior."));
+    narrativa.append(elemento("p", "relato", "No One Is Innocent. Thiago Maya, Santiago Olive y Facundo Felipe."));
+    narrativa.append(elemento("p", "contexto", "Código y decisiones: Thiago Maya. Animaciones y diseños: Santiago Olive. Organización de archivos y GitHub: Facundo Felipe. Ilustraciones y personajes del proyecto original."));
+    narrativa.append(elemento("p", "contexto", "Elegí con el mouse, el tacto o Tab y Enter. V abre la ficha; Escape vuelve a la escena desde la ficha o al menú. El progreso se guarda automáticamente en este navegador. Nueva partida reemplaza el recorrido anterior."));
+    narrativa.append(elemento("h2", "", "TRÁILER · BLACK VEIL"));
+    const video = elemento("video", "trailer");
+    video.controls = true;
+    video.preload = "metadata";
+    video.poster = "../public/multimedia/Portada_trailer.jpg";
+    video.src = "../public/multimedia/NO_ONE_IS_INNOCENT_Trailer_Sprint5.mp4";
+    video.setAttribute("aria-label", "Tráiler de No One Is Innocent, 35 segundos");
+    const subtitulos = elemento("track");
+    subtitulos.default = true;
+    subtitulos.kind = "subtitles"; subtitulos.srclang = "es"; subtitulos.label = "Español";
+    subtitulos.src = "../public/multimedia/Trailer_Sprint5.vtt";
+    video.append(subtitulos);
+    narrativa.append(video, elemento("p", "contexto", "Klark carga con su pasado. Veyra le ofrece un nuevo comienzo. BLACK VEIL conecta sus vidas. Seis decisiones dejan una huella. ¿Qué precio tiene la verdad? Nadie es inocente."));
     narrativa.append(accion("Volver al menú", volverAlInicio, "accion principal"));
     enfocarNarrativa();
 }
@@ -266,7 +305,7 @@ document.addEventListener("keydown", evento => {
 window.addEventListener("resize", () => { if (imagenes[imagenActual]) dibujarImagen(imagenActual); });
 
 async function iniciar() {
-    const archivos = { inicio: "image.png", pasado: "pasado.png", reunion: "reunion.png", encargo: "encargo.png", ficha: "ficha.png" };
+    const archivos = { inicio: "image.png", pasado: "pasado.png", reunion: "reunion.png", encargo: "encargo.png", ficha: "ficha.png", azotea: "../escenarios/fondo1_azotea_noche.webp", borde: "../escenarios/fondo2_azotea_borde.webp", oficina: "../escenarios/fondo3_oficina_noche.webp", amanecer: "../escenarios/fondo4_oficina_amanecer.webp" };
     const carga = document.getElementById("carga");
     try {
         if (!ctx) throw new Error("Este navegador no admite canvas");

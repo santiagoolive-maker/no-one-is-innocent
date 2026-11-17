@@ -8,6 +8,7 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="styles.css">
     <script src="historia.js" defer></script>
+    <script src="guardado.js" defer></script>
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -30,7 +31,7 @@
             <div id="zonas"></div>
             <article id="narrativa" hidden tabindex="-1" aria-labelledby="titulo-escena"></article>
         </section>
-        <footer id="ayuda" hidden>Seis decisiones. Tres finales. Cada elección deja una huella.</footer>
+        <footer id="ayuda" hidden>Seis decisiones. Tres finales. Cada elección deja una huella.<span id="estado-guardado" role="status"></span></footer>
         <p id="descripcion-escena" class="solo-lectores" aria-live="polite"></p>
         <div id="carga" role="status"><p>Cargando escenas…</p></div>
         <noscript>Activá JavaScript para jugar.</noscript>

@@ -86,3 +86,8 @@ summary { cursor: pointer; font-size: 14px; color: #c2d0d9; }
     .portada .zona:first-child { border-left: 3px solid var(--rojo); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::after { animation: none !important; transition: none !important; } }
+
+#estado-guardado { display: block; margin-top: 8px; line-height: 1.5; }
+.trailer { display:block; width:100%; aspect-ratio:16/9; background:#080e16; margin:16px 0; border:1px solid var(--borde); }
+.aviso-guardado { position:absolute; bottom:0; left:0; right:0; background:#080e16; padding:16px; color:#c2d4df; font-size:14px; }
+@media(max-width:760px) { .aviso-guardado { position:static; margin:0; } }

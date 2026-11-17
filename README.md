@@ -19,7 +19,15 @@ Usá mouse, tacto o Tab y Enter. **V** abre la ficha y **Escape** vuelve a la es
 - [Playtesting externo pendiente](docs/PLAYTESTING_EXTERNO.md)
 - [Multimedia](docs/MULTIMEDIA_SPRINT5.md)
 
-Las entregas históricas de los sprints 1 a 4 permanecen en `docs/`.
+## Historial de sprints
+
+| Sprint | Cambios de la etapa | Entrega |
+| --- | --- | --- |
+| 1 | Se definieron la historia de Klark y Adrián Veyra, las variables, el árbol de decisiones y tres finales posibles. | [Historia y decisiones](docs/Sprint_1_final.docx) |
+| 2 | Se planificaron la interfaz, los personajes, los escenarios y la cinemática introductoria. Se prepararon las primeras propuestas de pantallas. | [Preproducción](docs/Sprint_2_final.docx) |
+| 3 | Se creó el primer prototipo jugable con prólogo, seis decisiones, tres desenlaces, guardado local y una interfaz adaptable a celular. | [Entrega del Sprint 3](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/d48d6bc/docs/Sprint_3.md) |
+| 4 | Se incorporaron las láminas al juego, se revisó el recorrido y se agregó una ficha con variables, pistas y consecuencias. Se guardaron cuatro escenarios editables de Illustrator. | [Entrega y capturas del Sprint 4](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/ce4a675/docs/Sprint_4.md) |
+| 5 | Se integraron los cuatro fondos al recorrido, se recuperó el guardado automático tras recargar y se incorporó el tráiler con audio y subtítulos. Se agregaron pruebas de guardado y documentación de la entrega. | [Informe del Sprint 5](docs/Sprint_5.md) |
 
 ## Pruebas reproducibles
 

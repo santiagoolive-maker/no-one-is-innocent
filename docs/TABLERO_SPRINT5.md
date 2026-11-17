@@ -12,9 +12,13 @@ Actualizado: 17 de noviembre de 2026. Entrega indicada: jueves 19 de noviembre d
 - [x] Probar los tres finales en navegador y la adaptación a celular.
 - [x] Organizar entregables, fuentes, evidencia y registro de aportes. Organización/GitHub informados: Facundo Felipe; empaquetado asistido.
 
-## En curso
+## Código subido
 
-- [ ] Subida y comprobación de la versión publicada. Se actualizará con el commit y el enlace comprobados.
+- [x] Subir la versión a `santiagoolive-maker/no-one-is-innocent` y comprobar que GitHub coincide con la copia local.
+
+## Pendiente de acceso del propietario
+
+- [ ] Activar GitHub Pages en `main`, carpeta raíz, y comprobar el enlace. Requiere que Santiago Olive, como dueño del repositorio, habilite Pages. Ver `PUBLICACION.md`.
 
 ## Por hacer por el equipo
 

@@ -1,0 +1,173 @@
+{
+  "fecha": "2026-11-17",
+  "tipo": "Pruebas técnicas del asistente, sin participantes externos",
+  "pasos": [
+    {
+      "titulo": "El pasado de Klark",
+      "eleccion": "Continuar",
+      "pantalla": "Una nueva misión"
+    },
+    {
+      "titulo": "Una nueva misión",
+      "eleccion": "Comenzar la investigación",
+      "pantalla": "La reunión con Veyra"
+    },
+    {
+      "titulo": "La reunión con Veyra",
+      "eleccion": "Continuar",
+      "pantalla": "Un pedido del CEO"
+    },
+    {
+      "titulo": "Un pedido del CEO",
+      "eleccion": "Revisar el informe personalmenteAnalizar la información antes de actuar.",
+      "pantalla": "La amenaza"
+    },
+    {
+      "titulo": "La amenaza",
+      "eleccion": "Investigar el origen del mensaje",
+      "pantalla": "El empleado"
+    },
+    {
+      "titulo": "El empleado",
+      "eleccion": "Escuchar al empleado y buscar pruebas",
+      "pantalla": "BLACK VEIL"
+    },
+    {
+      "titulo": "BLACK VEIL",
+      "eleccion": "Conservar los documentos como pruebas",
+      "pantalla": "El precio de una voz"
+    },
+    {
+      "titulo": "El precio de una voz",
+      "eleccion": "Proteger al empleado y asegurar su testimonio",
+      "pantalla": "Nadie es inocente"
+    },
+    {
+      "titulo": "Nadie es inocente",
+      "eleccion": "Denunciar a Veyra y entregar las pruebasLa denuncia necesita documentos, un testigo protegido y una investigación sólida.",
+      "pantalla": "La verdad sale a la luz"
+    },
+    {
+      "titulo": "El pasado de Klark",
+      "eleccion": "Continuar",
+      "pantalla": "Una nueva misión"
+    },
+    {
+      "titulo": "Una nueva misión",
+      "eleccion": "Comenzar la investigación",
+      "pantalla": "La reunión con Veyra"
+    },
+    {
+      "titulo": "La reunión con Veyra",
+      "eleccion": "Continuar",
+      "pantalla": "Un pedido del CEO"
+    },
+    {
+      "titulo": "Un pedido del CEO",
+      "eleccion": "Delegar la investigación a tu equipoConfiar en tus compañeros y esperar su informe.",
+      "pantalla": "La amenaza"
+    },
+    {
+      "titulo": "La amenaza",
+      "eleccion": "Obedecer a Veyra y protegerlo",
+      "pantalla": "El empleado"
+    },
+    {
+      "titulo": "El empleado",
+      "eleccion": "Informar a Veyra y seguir sus órdenes",
+      "pantalla": "BLACK VEIL"
+    },
+    {
+      "titulo": "BLACK VEIL",
+      "eleccion": "Ocultar los documentos y negociar con Veyra",
+      "pantalla": "El precio de una voz"
+    },
+    {
+      "titulo": "El precio de una voz",
+      "eleccion": "Poner al empleado bajo el control de Veyra",
+      "pantalla": "Nadie es inocente"
+    },
+    {
+      "titulo": "Nadie es inocente",
+      "eleccion": "Aceptar el pacto de VeyraVeyra exige lealtad y una concesión: los documentos negociados o el control del testigo.",
+      "pantalla": "El nuevo cómplice"
+    },
+    {
+      "titulo": "El pasado de Klark",
+      "eleccion": "Continuar",
+      "pantalla": "Una nueva misión"
+    },
+    {
+      "titulo": "Una nueva misión",
+      "eleccion": "Comenzar la investigación",
+      "pantalla": "La reunión con Veyra"
+    },
+    {
+      "titulo": "La reunión con Veyra",
+      "eleccion": "Continuar",
+      "pantalla": "Un pedido del CEO"
+    },
+    {
+      "titulo": "Un pedido del CEO",
+      "eleccion": "Confrontar directamente al empleadoBuscar una respuesta rápida, asumiendo el riesgo.",
+      "pantalla": "La amenaza"
+    },
+    {
+      "titulo": "La amenaza",
+      "eleccion": "Pedir al equipo una vigilancia discreta",
+      "pantalla": "El empleado"
+    },
+    {
+      "titulo": "El empleado",
+      "eleccion": "Verificar su información sin revelar su identidad",
+      "pantalla": "BLACK VEIL"
+    },
+    {
+      "titulo": "BLACK VEIL",
+      "eleccion": "Crear un respaldo cifrado y devolver los originales",
+      "pantalla": "El precio de una voz"
+    },
+    {
+      "titulo": "El precio de una voz",
+      "eleccion": "Facilitar su huida sin tomar declaración",
+      "pantalla": "Nadie es inocente"
+    },
+    {
+      "titulo": "Nadie es inocente",
+      "eleccion": "Denunciar a Veyra y entregar las pruebasLa denuncia necesita documentos, un testigo protegido y una investigación sólida.",
+      "pantalla": "El peso del silencio"
+    }
+  ],
+  "movil": {
+    "ancho": 390,
+    "botones": [
+      {
+        "alto": 44,
+        "texto": "Menú Esc"
+      },
+      {
+        "alto": 44,
+        "texto": "Variables V"
+      },
+      {
+        "alto": 44,
+        "texto": "Animación: no"
+      },
+      {
+        "alto": 52,
+        "texto": "Nueva partida"
+      },
+      {
+        "alto": 52,
+        "texto": "Ver variables y pruebas"
+      },
+      {
+        "alto": 52,
+        "texto": "Volver al menú"
+      }
+    ],
+    "desbordados": 0,
+    "documento": 375
+  },
+  "consola": []
+}

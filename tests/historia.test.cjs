@@ -1,7 +1,7 @@
 "use strict";
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const H = require('../src/historia.js');
+const H = require('../js/historia.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -56,7 +56,7 @@ for (let numero = 0; numero < 729; numero++) {
             assert.ok(e.registro[i].resultado.length > 40, 'Debe haber una consecuencia narrativa reconocible');
             const escena = H.obtenerEscena(e);
             assert.ok(escena.titulo && escena.texto && escena.imagen);
-            assert.ok(fs.existsSync(path.join(__dirname, '..', 'public', 'img', 'laminas', escena.imagen + '.png')));
+            assert.ok(fs.existsSync(path.join(__dirname, '..', 'img', 'laminas', escena.imagen + '.png')));
             // Escenas posteriores: las consecuencias tienen que cambiar el acceso,
             // la reacción, los documentos disponibles y la situación del testigo.
             if (i === 1 && ruta[0] === 2) assert.match(escena.contexto, /cómo me trataste/);

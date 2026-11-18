@@ -1,8 +1,8 @@
 "use strict";
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const H = require("../src/historia.js");
-const G = require("../src/guardado.js");
+const H = require("../js/historia.js");
+const G = require("../js/guardado.js");
 
 test("Se recupera cada punto de las 729 rutas, incluidos los tres finales", () => {
     for (let numero = 0; numero < 729; numero++) {

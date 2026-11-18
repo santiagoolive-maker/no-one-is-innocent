@@ -1,2 +1,44 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="0;url=src/"><title>No One Is Innocent</title><style>body{background:#080e16;color:#e4e9ed;font:20px Arial;padding:10vw}a{color:#f23b4b}</style></head><body><h1>No One Is Innocent</h1><p><a href="src/">Entrar al juego</a></p></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080e16">
+    <title>No One Is Innocent</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <main id="juego" aria-label="No One Is Innocent">
+        <header id="cabecera" hidden>
+            <a class="marca" href="#" id="marca" aria-label="Volver al menú">NO ONE <span>IS INNOCENT</span></a>
+            <nav aria-label="Controles de partida">
+                <button id="menu" type="button">Menú <kbd>Esc</kbd></button>
+                <button id="variables" type="button">Variables <kbd>V</kbd></button>
+                <button id="movimiento" type="button" aria-pressed="true">Animación: sí</button>
+            </nav>
+        </header>
+        <section id="pantalla" aria-label="Escena del juego" class="portada">
+            <div id="ilustracion">
+                <svg id="imagen-escena" xmlns="http://www.w3.org/2000/svg" width="1536" height="1024"
+                     viewBox="0 0 1536 1024" role="img" aria-label="Klark frente a la ciudad nocturna">
+                    <image id="recurso-escena" href="img/laminas/image.png" width="1536" height="1024" aria-hidden="true" />
+                    <rect id="tapa-dialogo" x="1090" y="296" width="250" height="784" fill="#0b151e" style="display:none" />
+                    <g id="rotulo-continuar" style="display:none" aria-hidden="true">
+                        <rect x="117" y="458" width="452" height="83" fill="#101c26" stroke="#53616b" />
+                        <text x="179" y="512" fill="#e4e9ed" font-family="Arial" font-size="34">CONTINUAR</text>
+                    </g>
+                </svg>
+            </div>
+            <div id="zonas"></div>
+            <article id="narrativa" hidden tabindex="-1" aria-labelledby="titulo-escena"></article>
+        </section>
+        <footer id="ayuda" hidden>Seis decisiones. Tres finales. Cada elección deja una huella.<span id="estado-guardado" role="status"></span></footer>
+        <p id="descripcion-escena" class="solo-lectores" aria-live="polite"></p>
+        <noscript>Activá JavaScript para jugar.</noscript>
+    </main>
+    <script src="js/historia.js"></script>
+    <script src="js/guardado.js"></script>
+    <script src="js/juego.js"></script>
+</body>
+</html>

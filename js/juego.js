@@ -109,6 +109,7 @@ const recursos = {
 };
 const recortes = {
     secuenciaVeyra: [300, 120, 750, 900],
+    secuenciaKlark: [260, 140, 820, 820],
     pasado: [0, 0, 1090, 1080],
     reunion: [180, 120, 1070, 580],
     encargo: [0, 28, 1340, 1052],
@@ -126,7 +127,12 @@ recursos.retratoVeyra = {
     archivo: "img/personajes/adrian-veyra.svg", ancho: 145, alto: 210, encuadre: "xMidYMid meet"
 };
 recursos.secuenciaVeyra = {
-    archivo: "img/animaciones/movimientos-cambiados.svg", ancho: 1920, alto: 1080, encuadre: "xMidYMid meet"
+    archivo: "img/animaciones/movimientos-cambiados.svg", estatico: "img/animaciones/movimientos-cambiados-estatico.svg",
+    ancho: 1920, alto: 1080, encuadre: "xMidYMid meet"
+};
+recursos.secuenciaKlark = {
+    archivo: "img/animaciones/cambios-klickr.svg", estatico: "img/animaciones/cambios-klickr-estatico.svg",
+    ancho: 1920, alto: 1080, encuadre: "xMidYMid meet"
 };
 // Una única imagen fija para cada escena del recorrido.
 const imagenesPorEscena = {
@@ -172,8 +178,8 @@ function dibujarImagen(clave) {
     // Sólo cambia el encuadre y la ruta; el navegador muestra la imagen del SVG.
     dibujo.setAttribute("viewBox", recorte.join(" "));
     dibujo.setAttribute("preserveAspectRatio", recurso.encuadre || (vistaActual === "inicio" ? "xMidYMid slice" : "xMidYMin slice"));
-    const archivo = clave === "secuenciaVeyra"
-        ? (animaciones ? `${recurso.archivo}?reproduccion=${reproduccionSecuencia}` : "img/animaciones/movimientos-cambiados-estatico.svg")
+    const archivo = recurso.estatico
+        ? (animaciones ? `${recurso.archivo}?reproduccion=${reproduccionSecuencia}` : recurso.estatico)
         : recurso.archivo;
     recursoImagen.setAttribute("href", archivo);
     recursoImagen.setAttribute("width", recurso.ancho);
@@ -182,6 +188,7 @@ function dibujarImagen(clave) {
     document.getElementById("rotulo-continuar").style.display = vistaActual === "inicio" && estado && !celular ? "" : "none";
     dibujo.setAttribute("aria-label", {
         secuenciaVeyra: "Adrián Veyra reacciona durante la investigación de Klark",
+        secuenciaKlark: "Klark reflexiona antes de tomar la última decisión",
         inicio: "Klark frente a la ciudad nocturna", pasado: "Klark recuerda su pasado frente a la ciudad",
         reunion: "Reunión en la oficina de Torre Veyra", encargo: "Klark recibe el encargo en la oficina",
         ficha: "Klark en el archivo de la empresa",
@@ -247,15 +254,27 @@ function nuevaPartida() {
     mostrarEscena();
 }
 
-function mostrarSecuenciaVeyra() {
+function mostrarSecuencia(personaje) {
+    const secuencia = {
+        veyra: {
+            recurso: "secuenciaVeyra", titulo: "La mirada de Veyra", lugar: "TORRE VEYRA · ANTES DE BLACK VEIL",
+            texto: "Veyra te observa en silencio. Su expresión deja claro que cada paso de tu investigación tiene un precio.",
+            boton: "Continuar la investigación"
+        },
+        klark: {
+            recurso: "secuenciaKlark", titulo: "El peso de una decisión", lugar: "TORRE VEYRA · ANTES DEL ÚLTIMO INFORME",
+            texto: "El destino del empleado ya está decidido. Klark repasa lo que hizo durante la noche: las pruebas, las órdenes de Veyra y las huellas de su propio pasado. Ahora debe decidir cómo terminar esta historia.",
+            boton: "Tomar la última decisión"
+        }
+    }[personaje];
     vistaActual = "secuencia";
     reproduccionSecuencia += 1;
-    prepararVista("secuenciaVeyra", "La mirada de Veyra. Una pausa a mitad de la investigación.");
+    prepararVista(secuencia.recurso, `${secuencia.titulo}. ${secuencia.texto}`);
     pantalla.classList.add("secuencia");
-    tituloEscena("La mirada de Veyra", "TORRE VEYRA · ANTES DE BLACK VEIL", "3 / 6 DECISIONES REGISTRADAS");
-    narrativa.append(elemento("p", "relato", "Veyra te observa en silencio. Su expresión deja claro que cada paso de tu investigación tiene un precio."));
+    tituloEscena(secuencia.titulo, secuencia.lugar, `${estado.registro.length} / 6 DECISIONES REGISTRADAS`);
+    narrativa.append(elemento("p", "relato", secuencia.texto));
     const controles = elemento("div", "acciones");
-    controles.append(accion("Continuar la investigación", mostrarEscena, "accion principal"), accion("Volver al menú", volverAlInicio));
+    controles.append(accion(secuencia.boton, mostrarEscena, "accion principal"), accion("Volver al menú", volverAlInicio));
     narrativa.append(controles);
     enfocarNarrativa();
 }
@@ -307,8 +326,9 @@ function elegirOpcion(indice, escenaEsperada) {
     if (nuevoEstado === estado) return;
     estado = nuevoEstado;
     guardarPartida();
-    // La secuencia aparece después de la tercera decisión, antes de BLACK VEIL.
-    if (escenaEsperada === "empleado" && estado.escena === "archivos") mostrarSecuenciaVeyra();
+    // Las secuencias acompañan el avance sin modificar las decisiones guardadas.
+    if (escenaEsperada === "empleado" && estado.escena === "archivos") mostrarSecuencia("veyra");
+    else if (escenaEsperada === "testigo" && estado.escena === "desenlace") mostrarSecuencia("klark");
     else mostrarEscena();
 }
 
@@ -416,7 +436,7 @@ document.getElementById("movimiento").addEventListener("click", () => {
     document.getElementById("movimiento").setAttribute("aria-pressed", String(animaciones));
     if (vistaActual === "secuencia") {
         if (animaciones) reproduccionSecuencia += 1;
-        dibujarImagen("secuenciaVeyra");
+        dibujarImagen(imagenActual);
     }
 });
 document.addEventListener("keydown", evento => {

@@ -4,11 +4,15 @@ Aventura gráfica de Klark, Adrián Veyra, BLACK VEIL y ZENITH. Versión final j
 
 ## Jugar
 
+**[Abrir el juego online](https://supersonicthiago.github.io/no-one-is-innocent/)**
+
 Abrí la carpeta en Visual Studio Code y ejecutá `index.html` con **Go Live**. No se instalan paquetes. Conservá juntas las carpetas `css`, `js`, `img` y `multimedia`. Todo el JavaScript de la aplicación está dentro de `js/` y no utiliza programación asincrónica.
 
 El progreso se guarda automáticamente en este navegador y se recupera con **Continuar partida**, incluso después de recargar. **Nueva partida** reemplaza ese progreso. Si el navegador bloquea el almacenamiento, la partida sigue funcionando en la pestaña abierta.
 
 Usá mouse, tacto o Tab y Enter. **V** abre la ficha y **Escape** vuelve a la escena o al menú. **Animación** desactiva las transiciones y muestra un fotograma estático de las secuencias. El tráiler se reproduce desde **Créditos** con controles y subtítulos en español.
+
+La animación de Veyra aparece después de la tercera decisión. La nueva animación de Klark aparece después de la quinta, antes de decidir el desenlace. Las dos provienen de archivos .fla del equipo y se muestran como SVG animado, con alternativa estática.
 
 ## Entrega
 
@@ -25,7 +29,7 @@ Usá mouse, tacto o Tab y Enter. **V** abre la ficha y **Escape** vuelve a la es
 | 2 | Se planificaron la interfaz, los personajes, los escenarios y la cinemática introductoria. Se prepararon las primeras propuestas de pantallas. | [Preproducción](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/3fb9a907655eab89aa5ace43704d198968eb1afb/docs/Sprint_2_final.docx) |
 | 3 | Se creó el primer prototipo jugable con prólogo, seis decisiones, tres desenlaces, guardado local y una interfaz adaptable a celular. | [Entrega del Sprint 3](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/d48d6bc/docs/Sprint_3.md) |
 | 4 | Se incorporaron las láminas al juego, se revisó el recorrido y se agregó una ficha con variables, pistas y consecuencias. Se guardaron cuatro escenarios editables de Illustrator. | [Entrega y capturas del Sprint 4](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/ce4a675/docs/Sprint_4.md) |
-| 5 | Se integraron los cuatro fondos al recorrido, se recuperó el guardado automático tras recargar y se incorporó el tráiler con audio y subtítulos. Se agregaron pruebas de guardado y documentación de la entrega. | [Informe del Sprint 5](https://github.com/santiagoolive-maker/no-one-is-innocent/blob/3fb9a907655eab89aa5ace43704d198968eb1afb/docs/Sprint_5.md) |
+| 5 | Juego final con guardado, escenarios variados, tráiler, secuencias animadas de Veyra y Klark, pruebas técnicas, tablero y registro simulado de playtesting. | [Tablero y entrega del Sprint 5](TABLERO_SPRINT5.md) |
 
 ## Pruebas reproducibles
 
@@ -35,4 +39,6 @@ Resultado: 738 pruebas aprobadas. Las 729 rutas verifican puntos y cierres; tres
 
 ## Equipo
 
-Thiago Maya: código y decisiones. Santiago Olive: animaciones y diseños. Facundo Felipe: archivos y GitHub. Aportes informados por el usuario; esta revisión incluye trabajo asistido por Codex.
+Thiago Maya: código, decisiones e integración de las animaciones. Santiago Olive: diseños y creación de los últimos archivos .fla. Facundo Felipe: archivos, GitHub y preparación del registro de playtesting simulado. Aportes informados por el usuario; esta revisión incluye trabajo asistido por Codex.
+
+La publicación usa una copia sincronizada en la cuenta supersonicthiago porque la cuenta colaboradora no puede activar Pages en el repositorio de Santiago. El repositorio principal y los commits del equipo siguen en santiagoolive-maker/no-one-is-innocent.

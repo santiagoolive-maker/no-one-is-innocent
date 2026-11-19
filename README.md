@@ -37,8 +37,14 @@ Con Node.js: `node --test tests/historia.test.cjs tests/guardado.test.cjs`.
 
 Resultado: 738 pruebas aprobadas. Las 729 rutas verifican puntos y cierres; tres nuevas pruebas de guardado incluyen la recuperación de cada punto de las 729 rutas. Se comprobó la interfaz en navegador de escritorio y vista móvil. Estas son verificaciones técnicas. El registro de playtesting se identifica como una simulación, sin atribuir sesiones reales a las personas nombradas.
 
+## Cómo contribuir
+
+Si encontrás un problema en una partida, anotá las decisiones que tomaste, el resultado esperado y lo que ocurrió. Una captura o los pasos exactos para repetirlo ayudan al equipo a corregirlo.
+
+Para proponer un cambio, editá los archivos correspondientes y ejecutá `node --test tests/historia.test.cjs tests/guardado.test.cjs` antes de enviarlo. En la descripción del cambio, indicá qué modificaste y cómo lo probaste. Si registrás una prueba de juego, distinguí las sesiones reales de las simulaciones.
+
 ## Equipo
 
-Thiago Maya: código, decisiones e integración de las animaciones. Santiago Olive: diseños y creación de los últimos archivos .fla. Facundo Felipe: archivos, GitHub y preparación del registro de playtesting simulado. Aportes informados por el usuario; esta revisión incluye trabajo asistido por Codex.
+Thiago Maya: código, decisiones e integración de las animaciones. Santiago Olive: diseños y creación de los últimos archivos .fla. [Facundo Felipe (@colocabj121905)](https://github.com/colocabj121905): archivos, GitHub y preparación del registro de playtesting simulado. Aportes informados por el usuario; esta revisión incluye trabajo asistido por Codex.
 
 La publicación usa una copia sincronizada en la cuenta supersonicthiago porque la cuenta colaboradora no puede activar Pages en el repositorio de Santiago. El repositorio principal y los commits del equipo siguen en santiagoolive-maker/no-one-is-innocent.

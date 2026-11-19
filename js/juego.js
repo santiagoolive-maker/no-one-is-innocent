@@ -246,6 +246,23 @@ function mostrarResumen() {
         resumen.append(dato);
     }
     narrativa.append(resumen);
+    const ayuda = elemento("details", "ayuda-variables");
+    ayuda.append(elemento("summary", "", "¿Qué significa cada variable?"));
+    const definiciones = elemento("dl");
+    for (const [id, nombre] of Object.entries(Historia.nombresVariables)) {
+        definiciones.append(elemento("dt", "", nombre), elemento("dd", "", explicarVariable(id)));
+    }
+    ayuda.append(definiciones);
+    narrativa.append(ayuda);
+}
+
+function explicarVariable(id) {
+    return {
+        corrupcion: "Participación de Klark en el encubrimiento y en acuerdos con Veyra.",
+        investigacion: "Avance en el análisis de las pistas y de la información del caso.",
+        lealtad: "Compromiso de Klark con las órdenes de Veyra.",
+        moralidad: "Decisiones que priorizan proteger a otras personas y buscar justicia."
+    }[id];
 }
 
 function nuevaPartida() {
@@ -359,7 +376,7 @@ function mostrarFicha() {
         barra.max = Historia.maximos[id];
         barra.value = estado.variables[id];
         barra.textContent = String(estado.variables[id]);
-        fila.append(etiqueta, barra);
+        fila.append(etiqueta, barra, elemento("p", "explicacion-variable", explicarVariable(id)));
         narrativa.append(fila);
     }
     narrativa.append(elemento("h2", "", "PISTAS Y DOCUMENTOS"));

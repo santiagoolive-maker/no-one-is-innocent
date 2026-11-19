@@ -35,7 +35,7 @@ La animación de Veyra aparece después de la tercera decisión. La nueva animac
 
 Con Node.js: `node --test tests/historia.test.cjs tests/guardado.test.cjs`.
 
-Resultado: 738 pruebas aprobadas. Las 729 rutas verifican puntos y cierres; tres nuevas pruebas de guardado incluyen la recuperación de cada punto de las 729 rutas. Se comprobó la interfaz en navegador de escritorio y vista móvil. Esto no sustituye las pruebas con personas ajenas al desarrollo, que siguen pendientes de resultados reales.
+Resultado: 738 pruebas aprobadas. Las 729 rutas verifican puntos y cierres; tres nuevas pruebas de guardado incluyen la recuperación de cada punto de las 729 rutas. Se comprobó la interfaz en navegador de escritorio y vista móvil. Estas son verificaciones técnicas. El registro de playtesting se identifica como una simulación, sin atribuir sesiones reales a las personas nombradas.
 
 ## Equipo
 
